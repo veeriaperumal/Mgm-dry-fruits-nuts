@@ -1,0 +1,160 @@
+/* ================= AUTO ANIMATIONS ================= */
+
+/* Entrance Animation */
+@keyframes cardPop {
+  0% { opacity: 0; transform: scale(0.8) translateY(30px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Continuous Infinite Floating Animation */
+@keyframes autoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ================= PRODUCTS PAGE ================= */
+.products-page {
+  width: 100%;
+  background: #fffbe6;
+  background-image: radial-gradient(#eadfcd 1px, transparent 1px);
+  background-size: 40px 40px;
+  padding: 80px 20px 100px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.products-title {
+  font-size: clamp(30px, 5vw, 42px);
+  font-weight: 800;
+  color: #222;
+  margin-bottom: 8px;
+  animation: cardPop 0.8s ease-out both;
+}
+
+.products-subtitle {
+  font-size: 18px;
+  color: #2e7d32;
+  margin-bottom: 60px;
+  animation: cardPop 0.8s ease-out 0.2s both;
+}
+
+/* GRID SYSTEM */
+.products-grid {
+  max-width: 1300px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Default 5 for Desktop */
+  gap: 25px;
+}
+
+/* THE CARD WITH DUAL AUTO-ANIMATION */
+.product-card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: all 0.4s ease;
+
+  /* COMBINED: Entrance (runs once) + Float (runs forever) */
+  animation: 
+    cardPop 0.6s ease-out both, 
+    autoFloat 4s ease-in-out infinite;
+}
+
+/* Staggering the Floating Speeds so they don't move all at once (feels natural) */
+.product-card:nth-child(odd) { animation-duration: 0.6s, 5s; animation-delay: 0.1s, 0.5s; }
+.product-card:nth-child(even) { animation-duration: 0.6s, 4s; animation-delay: 0.2s, 0s; }
+.product-card:nth-child(3n) { animation-duration: 0.6s, 6s; animation-delay: 0.3s, 1s; }
+
+.product-card:hover {
+  /* Pause the auto-float on hover so user can click easily */
+  animation-play-state: running, paused; 
+  transform: scale(1.05) translateY(-5px) !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  border: 1px solid #2e7d32;
+}
+
+.product-img {
+  width: 100%;
+  height: 170px;
+  margin-bottom: 15px;
+  background: #fdfdfd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-img img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover img {
+  transform: rotate(5deg) scale(1.1);
+}
+
+.product-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222;
+}
+
+/* ================= FLOATING CONTACT ICONS ================= */
+.floating-contact {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 2000;
+}
+
+.contact-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transition: 0.3s;
+  animation: autoFloat 3s infinite ease-in-out;
+}
+
+.whatsapp { background: #25d366; }
+.phone { background: #c62828; animation-delay: 0.5s; }
+
+/* ================= PERFECT MOBILE RESPONSIVE ================= */
+
+@media (max-width: 1200px) {
+  .products-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 992px) {
+  .products-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .products-grid { 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 15px; 
+  }
+  .product-img { height: 140px; }
+  /* Reduce float intensity on mobile for better performance */
+  @keyframes autoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+}
+
+@media (max-width: 480px) {
+  .products-title { font-size: 28px; }
+  .products-grid { gap: 10px; }
+  .product-card { padding: 15px 10px; }
+}

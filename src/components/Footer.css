@@ -1,0 +1,300 @@
+/* ================= FOOTER ================= */
+
+.footer-section {
+  width: 100%;
+
+  background: #fffbe6;
+
+  background-image:
+    radial-gradient(#eadfcd 1px, transparent 1px);
+
+  background-size: 40px 40px;
+
+  padding: 50px 30px 20px;
+
+  font-family: "Poppins", sans-serif;
+}
+
+
+/* TOP AREA */
+
+.footer-top {
+  max-width: 1200px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: 1.3fr 1fr 1.5fr;
+
+  gap: 40px;
+
+  align-items: flex-start;
+}
+
+
+/* LEFT */
+
+.footer-left {
+  text-align: left;
+}
+
+.footer-logo {
+  width: 90px;
+
+  margin-bottom: 10px;
+}
+
+.footer-left h3 {
+  font-size: 20px;
+
+  color: #b8860b;
+
+  font-weight: 600;
+}
+
+
+/* CENTER */
+
+.footer-links h4,
+.footer-contact h4 {
+  font-size: 16px;
+
+  font-weight: 600;
+
+  margin-bottom: 15px;
+
+  color: #222;
+}
+
+.footer-links ul {
+  list-style: none;
+
+  padding: 0;
+  margin: 0;
+}
+
+
+/* List Item */
+
+.footer-links li {
+  font-size: 14px;
+
+  margin-bottom: 8px;
+
+  cursor: pointer;
+}
+
+
+/* CENTER */
+
+.footer-links h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+/* List Item */
+
+.footer-links li {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+
+/* Link + Button */
+
+.footer-links li a,
+.footer-links li button {
+  background: none;
+  border: none;
+
+  color: #333;
+
+  text-decoration: none;
+
+  display: inline-block;
+
+  font-size: 14px;
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  padding: 0;
+
+  transition: all 0.25s ease;
+}
+
+
+/* Hover Effect */
+
+.footer-links li a:hover,
+.footer-links li button:hover {
+  color: #c62828;
+
+  transform: translateX(4px);
+}
+
+
+
+
+/* RIGHT */
+
+.footer-contact p {
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  color: #333;
+
+  margin-bottom: 12px;
+}
+
+.footer-phone {
+  font-weight: 600;
+
+  color: #000;
+}
+
+
+/* BOTTOM */
+
+.footer-bottom {
+  max-width: 1200px;
+
+  margin: 40px auto 0;
+
+  padding-top: 15px;
+
+  border-top: 1px solid #ddd;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+
+  color: #555;
+}
+
+
+/* Instagram */
+
+.footer-insta img {
+  width: 28px;
+
+  height: 28px;
+
+  cursor: pointer;
+}
+
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width: 1024px) {
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+}
+
+
+@media (max-width: 768px) {
+
+  .footer-section {
+    padding: 40px 20px 20px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 30px;
+
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-links,
+  .footer-contact {
+    text-align: center;
+  }
+
+  .footer-logo {
+    margin: 0 auto 12px;
+  }
+
+  .footer-left h3 {
+    font-size: 18px;
+  }
+
+  .footer-links ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-links li {
+    margin-bottom: 10px;
+  }
+
+  .footer-contact p {
+    font-size: 13px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .footer-section {
+    padding: 35px 15px 15px;
+  }
+
+  .footer-left h3 {
+    font-size: 16px;
+  }
+
+  .footer-links h4,
+  .footer-contact h4 {
+    font-size: 15px;
+  }
+
+  .footer-links li a,
+  .footer-links li button {
+    font-size: 13px;
+  }
+
+  .footer-contact p {
+    font-size: 12px;
+  }
+
+  .footer-bottom p {
+    font-size: 12px;
+  }
+
+  .footer-insta img {
+    width: 24px;
+    height: 24px;
+  }
+
+}

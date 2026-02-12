@@ -1,0 +1,958 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Pacifico&display=swap');
+
+/* ================= 1. KEYFRAMES (THE AUTO-ENGINE) ================= */
+
+/* Entrance for the whole content block */
+@keyframes ultraFadeIn {
+  0% { opacity: 0; transform: translateY(50px) scale(0.9); filter: blur(10px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+/* Floating animation for the title */
+@keyframes floatingText {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-8px) rotate(-1deg); }
+  66% { transform: translateY(-4px) rotate(1deg); }
+}
+
+/* Moving background pattern */
+@keyframes bgMove {
+  from { background-position: 0 0; }
+  to { background-position: 70px 70px; }
+}
+
+/* Pulse for the button to grab attention automatically */
+@keyframes autoPulse {
+  0% { box-shadow: 0 0 0 0 rgba(198, 40, 40, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(198, 40, 40, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(198, 40, 40, 0); }
+}
+
+/* ================= 2. HERO SECTION ================= */
+
+.home-hero {
+  width: 100%;
+  min-height: 90vh; /* More breathing room */
+  background-color: #fffbe6;
+  background-image: radial-gradient(#eadfcd 1px, transparent 1px);
+  background-size: 35px 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  position: relative;
+  overflow: hidden;
+  /* Auto-Animation: Moving background dots */
+  animation: bgMove 30s linear infinite;
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 900px;
+  z-index: 2;
+  /* Auto-Animation: Smooth entrance on load */
+  animation: ultraFadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-title {
+  font-family: "Pacifico", cursive;
+  font-size: clamp(38px, 8vw, 68px); /* Responsive sizing */
+  font-weight: 400;
+  color: #2b2b2b;
+  line-height: 1.2;
+  /* Auto-Animation: Gently floats forever */
+  animation: floatingText 6s ease-in-out infinite;
+}
+
+.hero-subtitle {
+  margin-top: 15px;
+  font-size: clamp(16px, 2.5vw, 22px);
+  font-weight: 700;
+  color: #2e7d32;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  opacity: 0;
+  /* Staggered auto-reveal */
+  animation: ultraFadeIn 0.8s ease-out 0.4s forwards;
+}
+
+.hero-desc {
+  margin: 25px auto;
+  max-width: 700px;
+  font-size: clamp(14px, 1.8vw, 17px);
+  line-height: 1.8;
+  color: #4a4a4a;
+  opacity: 0;
+  /* Staggered auto-reveal */
+  animation: ultraFadeIn 0.8s ease-out 0.6s forwards;
+}
+
+/* ================= 3. THE BUTTON (AUTO + HOVER) ================= */
+
+.hero-btn {
+  margin-top: 35px;
+  background: #c62828;
+  color: white;
+  border: none;
+  border-radius: 50px; /* Modern pill shape */
+  padding: 16px 48px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 25px rgba(198, 40, 40, 0.2);
+  
+  /* Entrance and Pulse */
+  opacity: 0;
+  animation: ultraFadeIn 0.8s ease-out 0.8s forwards, 
+             autoPulse 2s infinite 2s;
+}
+
+/* Shine effect that moves automatically across the button */
+.hero-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: none;
+  animation: shineMove 4s infinite 3s;
+}
+
+@keyframes shineMove {
+  0% { left: -100%; }
+  20% { left: 200%; }
+  100% { left: 200%; }
+}
+
+/* Hover Animation */
+.hero-btn:hover {
+  background: #b71c1c;
+  transform: translateY(-8px) scale(1.1);
+  box-shadow: 0 15px 35px rgba(198, 40, 40, 0.4);
+}
+
+.hero-btn:active {
+  transform: translateY(-2px) scale(0.95);
+}
+
+/* ================= 4. MOBILE RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .home-hero {
+    min-height: 70vh;
+    padding: 100px 20px 60px;
+  }
+  
+  .hero-title {
+    font-size: 42px;
+    animation-duration: 4s; /* Faster bobbing for smaller screens */
+  }
+
+  .hero-subtitle {
+    letter-spacing: 1.5px;
+    font-size: 15px;
+  }
+
+  .hero-btn {
+    width: 100%; /* Full width button on phones is easier to click */
+    padding: 14px 20px;
+    font-size: 16px;
+  }
+}
+
+/* Super small phones */
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: 34px;
+  }
+}
+
+/* Optimization: Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .hero-title, .hero-content, .hero-btn {
+    animation: none !important;
+  }
+}
+
+/* ================= ULTRA AUTO-ANIMATION ENGINE ================= */
+
+/* 1. Continuous Floating (Makes the grid feel like it's breathing) */
+@keyframes autoFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(-0.5deg); }
+  66% { transform: translateY(-5px) rotate(0.5deg); }
+}
+
+/* 2. Automatic Glint (Light sweep that runs every few seconds) */
+@keyframes autoGlint {
+  0% { left: -150%; }
+  20% { left: 150%; }
+  100% { left: 150%; }
+}
+
+/* 3. Entrance Pop (Run once on load) */
+@keyframes ultraPopIn {
+  0% { opacity: 0; transform: scale(0.5); filter: blur(15px); }
+  100% { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+/* ================= GALLERY SECTION ================= */
+
+.gallery-section {
+  width: 100%;
+  background-color: #fffbe6;
+  background-image: radial-gradient(#eadfcd 1px, transparent 1px);
+  background-size: 35px 35px;
+  padding: 80px 20px;
+  margin-top: -90px;
+  overflow: hidden;
+}
+
+.gallery-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.gallery-card {
+  background: white;
+  border-radius: 24px;
+  padding: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  
+  /* COMBINED AUTO-ANIMATIONS:
+     - ultraPopIn: Runs once (0.8s)
+     - autoFloat: Runs forever (different times for each card below) */
+  animation: ultraPopIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+             autoFloat 6s ease-in-out infinite;
+}
+
+/* Give each card a different speed so they don't move in sync (Very important for Ultra feel) */
+.gallery-card:nth-child(odd)  { animation-duration: 0.8s, 7s; animation-delay: 0.1s, 0s; }
+.gallery-card:nth-child(even) { animation-duration: 0.8s, 5s; animation-delay: 0.3s, 1s; }
+.gallery-card:nth-child(3n)   { animation-duration: 0.8s, 8s; animation-delay: 0.5s, 0.5s; }
+
+.gallery-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 18px;
+  transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+/* The Shine/Glint (Automatically sweeps across cards) */
+.gallery-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transform: skewX(-25deg);
+  /* AUTO: The shine moves every 5 seconds without hovering */
+  animation: autoGlint 5s infinite ease-in-out;
+}
+
+/* ================= HOVER OVERRIDE ================= */
+
+.gallery-card:hover {
+  transform: translateY(-20px) scale(1.03) !important; /* Lifts even higher on hover */
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  animation-play-state: paused; /* Stops the auto-float when you touch it */
+}
+
+.gallery-card:hover img {
+  transform: scale(1.1);
+}
+
+/* ================= ABOUT SECTION ================= */
+.about-section {
+  width: 100%;
+  background: #fffbe6;
+  background-image: radial-gradient(#e8dcc6 1px, transparent 1px);
+  background-size: 38px 38px;
+  padding: 90px 40px 160px;
+  position: relative;
+}
+
+.about-main {
+  max-width: 1250px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-img-box img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 22px;
+}
+
+.about-text-box h2 {
+  font-size: 34px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 22px;
+}
+
+.about-text-box p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #d32f2f;
+  max-width: 560px;
+}
+
+.about-stats-box {
+  position: absolute;
+  left: 50%; /* Changed from 900px to 50% for centering */
+  bottom: 90px;
+  transform: translateX(-50%);
+  width: 90%; /* Use percentage for width safety */
+  max-width: 650px;
+  background: #fff;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+  z-index: 5;
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #d32f2f;
+  position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 18%;
+  width: 1px;
+  height: 65%;
+  background: #ddd;
+}
+
+/* ================= PERFECT MOBILE RESPONSIVE ================= */
+
+@media (max-width: 1024px) {
+  .about-main {
+    grid-template-columns: 1fr; /* Stack image and text */
+    gap: 40px;
+    text-align: center;
+  }
+
+  .about-text-box p {
+    margin: 0 auto;
+  }
+
+  .about-stats-box {
+    position: relative; /* Remove absolute on tablet/mobile */
+    left: auto;
+    bottom: auto;
+    transform: none;
+    margin: 40px auto 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 60px 20px 80px;
+  }
+
+  .about-text-box h2 {
+    font-size: 28px;
+  }
+
+  .stat-item {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-stats-box {
+    flex-direction: column; /* Stack stats vertically on small phones */
+    padding: 20px 0;
+    gap: 20px;
+  }
+
+  .stat-item:not(:last-child)::after {
+    display: none; /* Remove vertical dividers when stacked */
+  }
+
+  .about-img-box img {
+    height: 250px;
+  }
+}
+
+/* ================= CATEGORY AUTO-ANIMATIONS ================= */
+
+/* Entrance: Cards pop in from the bottom one-by-one */
+@keyframes categoryPopIn {
+  0% { opacity: 0; transform: scale(0.8) translateY(40px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Floating: Different cards bob up/down independently */
+@keyframes categoryFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Icon Pulse: The circular icon gently breathes */
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 3px 8px rgba(0,0,0,0.15); }
+  50% { transform: scale(1.1); box-shadow: 0 8px 20px rgba(57, 181, 74, 0.3); }
+}
+
+/* ================= SHOP CATEGORY STYLE ================= */
+
+.category-section {
+  width: 100%;
+  background: #fffbe6;
+  background-image: radial-gradient(#eadfcd 1px, transparent 1px);
+  background-size: 40px 40px;
+  padding: 100px 20px;
+  overflow: hidden;
+}
+
+.category-title {
+  text-align: center;
+  font-size: clamp(24px, 5vw, 32px);
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 60px;
+  /* Auto-reveal title */
+  animation: categoryPopIn 1s ease-out both;
+}
+
+.category-row {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  /* AUTO-GRID: Switches from 4 to 2 to 1 columns automatically */
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 30px;
+}
+
+.category-card {
+  height: 280px;
+  background: #f7f9e8;
+  border: 2px solid #39b54a;
+  border-radius: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+
+  /* COMBINED AUTO: Pop in once, then float forever */
+  animation: categoryPopIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+             categoryFloat 5s ease-in-out infinite;
+}
+
+/* Staggered Delay & Variable Float Speeds (Prevents robotic motion) */
+.category-card:nth-child(1) { animation-delay: 0.1s, 0s; }
+.category-card:nth-child(2) { animation-delay: 0.2s, 0.5s; animation-duration: 0.8s, 6s; }
+.category-card:nth-child(3) { animation-delay: 0.3s, 0.2s; animation-duration: 0.8s, 4.5s; }
+.category-card:nth-child(4) { animation-delay: 0.4s, 1s; animation-duration: 0.8s, 5.5s; }
+
+.category-icon {
+  width: 85px;
+  height: 85px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  position: relative;
+  /* AUTO: Icons breathe independently */
+  animation: iconPulse 4s ease-in-out infinite;
+}
+
+.category-icon img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+}
+
+.category-card p {
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+}
+
+/* ================= HOVER INTERACTION ================= */
+
+.category-card:hover {
+  background: #ffffff;
+  border-color: #2e7d32;
+  transform: translateY(-20px) scale(1.05) !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  animation-play-state: paused; /* Stop floating when user hovers */
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .category-section {
+    padding: 60px 15px;
+  }
+  
+  .category-row {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+    gap: 20px;
+  }
+
+  .category-card {
+    height: 240px;
+    border-radius: 35px;
+    animation-name: categoryPopIn; /* Disable float on mobile to prevent jitter */
+  }
+
+  .category-icon {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .category-icon img {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-row {
+    grid-template-columns: 1fr; /* 1 per row on phones */
+    max-width: 300px;
+  }
+  
+  .category-card:hover {
+    transform: translateY(-10px) scale(1.02) !important;
+  }
+}
+/* ================= TESTIMONIALS (FIXED) ================= */
+.testimonial-section {
+  width: 100%;
+  background: #fffbe6;
+  background-image: radial-gradient(#eadfcd 1px, transparent 1px);
+  background-size: 40px 40px;
+  padding: 90px 30px 100px;
+  text-align: center;
+  overflow: hidden; 
+}
+
+.test-sub {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.test-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 60px;
+}
+
+.testimonial-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: auto; /* Enable touch swipe on mobile */
+  padding: 40px 0;
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.testimonial-wrapper::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+.testimonial-slider {
+  display: flex;
+  gap: 35px;
+  width: max-content; 
+  will-change: transform;
+  padding: 0 20px;
+}
+
+.testimonial-card {
+  background: #d8ccb0;
+  border-radius: 28px;
+  padding: 60px 30px 35px;
+  position: relative;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+  transition: 0.3s ease;
+  width: 350px; 
+  flex-shrink: 0;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+}
+
+.test-user {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #fff;
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+}
+
+.test-user img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.test-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #fff;
+  margin-bottom: 25px;
+}
+
+.testimonial-card h4 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #f5b000;
+  margin-bottom: 4px;
+}
+
+.testimonial-card span {
+  font-size: 13px;
+  color: #f5f5f5;
+}
+
+.test-controls {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.test-controls button {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  background: #d8ccb0;
+  color: #333;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: 0.3s;
+}
+
+/* ================= WHY MGM ================= */
+.why-section {
+  width: 100%;
+  background: #fffbe6;
+  background-image: radial-gradient(#eadfcd 1px, transparent 1px);
+  background-size: 40px 40px;
+  padding: 90px 20px 100px;
+  text-align: center;
+}
+
+.why-title {
+  font-size: 38px;
+  font-weight: 700;
+  color: #c62828;
+  margin-bottom: 12px;
+}
+
+.why-subtitle {
+  font-size: 16px;
+  color: #2e7d32;
+  max-width: 700px;
+  margin: 0 auto 50px;
+  line-height: 1.6;
+}
+
+.why-box {
+  max-width: 1200px;
+  margin: auto;
+  background: white;
+  border-radius: 20px;
+  padding: 35px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 0 25px rgba(0,255,120,0.35), 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.why-item {
+  flex: 1;
+  text-align: center;
+}
+
+.why-icon {
+  width: 70px;
+  height: 70px;
+  background: #d9cfb3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  box-shadow: inset 0 0 0 3px #fff;
+}
+
+.why-icon img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.why-item p {
+  font-size: 15px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* ================= FAQ SECTION ================= */
+.faq-section {
+  width: 100%;
+  background: #fffbe6;
+  background-image: radial-gradient(#eadfcd 1px, transparent 1px);
+  background-size: 40px 40px;
+  padding: 90px 20px 100px;
+  text-align: center;
+}
+
+.faq-title {
+  font-size: 34px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 50px;
+}
+
+.faq-wrapper {
+  max-width: 900px;
+  margin: auto;
+}
+
+.faq-item {
+  background: white;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.faq-question {
+  padding: 18px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  color: #222;
+  font-size: 15px;
+  text-align: left;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 25px;
+  font-size: 14px;
+  color: #2e7d32;
+  line-height: 1.6;
+  transition: all 0.35s ease;
+  text-align: left;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 250px;
+  padding: 15px 25px 20px;
+}
+
+/* ================= CTA SECTION ================= */
+.cta-section {
+  width: 100%;
+  background: #fffbe6;
+  background-image: radial-gradient(#eadfcd 1px, transparent 1px);
+  background-size: 40px 40px;
+  padding: 80px 20px;
+}
+
+.cta-box {
+  max-width: 1250px;
+  margin: auto;
+  background: #c62828;
+  border-radius: 45px;
+  padding: 60px 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+.cta-left {
+  width: 55%;
+  text-align: left;
+}
+
+.cta-left h2 {
+  color: #fff;
+  font-size: 80px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+
+.cta-btn {
+  background: #fff;
+  color: #c62828;
+  border: none;
+  padding: 14px 36px;
+  border-radius: 30px;
+  font-size: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cta-right {
+  width: 45%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.cta-right img {
+  width: 320px;
+  height: 320px;
+  object-fit: contain;
+}
+
+/* ================= MOBILE RESPONSIVE (CRITICAL FIXES) ================= */
+
+@media (max-width: 1024px) {
+  .cta-left h2 { font-size: 60px; }
+  .why-box { flex-wrap: wrap; justify-content: center; }
+  .why-item { flex: 0 0 45%; }
+}
+
+@media (max-width: 768px) {
+  .test-title, .why-title, .faq-title { font-size: 28px; }
+  
+  /* CTA Mobile Fix */
+  .cta-box { flex-direction: column; padding: 40px 30px; text-align: center; }
+  .cta-left, .cta-right { width: 100%; }
+  .cta-left { text-align: center; margin-bottom: 30px; }
+  .cta-left h2 { font-size: 40px; }
+  .cta-right { justify-content: center; }
+  .cta-right img { width: 220px; height: 220px; }
+
+  /* Testimonial Mobile Fix */
+  .testimonial-card { width: 280px; padding: 50px 20px 30px; }
+}
+
+@media (max-width: 480px) {
+  .why-item { flex: 0 0 100%; margin-bottom: 20px; }
+  .cta-left h2 { font-size: 32px; }
+  .cta-btn { font-size: 20px; padding: 12px 28px; }
+  .testimonial-slider { gap: 15px; }
+}
+/* ================= FLOATING CONTACT ICONS ================= */
+.floating-contact {
+  position: fixed;
+  right: 25px; /* Positioned to the right */
+  bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 1000; /* Stays above everything */
+}
+
+.contact-icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px; /* Controls size of React Icons */
+  color: white; /* Icon color */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: floatingBounce 2.5s infinite ease-in-out;
+}
+
+.whatsapp {
+  background-color: #25d366;
+}
+
+.phone {
+  background-color: #c62828;
+  animation-delay: 0.3s; /* Staggered movement */
+}
+
+/* Hover effects */
+.contact-icon:hover {
+  transform: scale(1.15) translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  color: white;
+}
+
+/* Auto-Animation: Subtle Floating */
+@keyframes floatingBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 480px) {
+  .floating-contact {
+    right: 15px;
+    bottom: 15px;
+    gap: 12px;
+  }
+  
+  .contact-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+}
