@@ -956,3 +956,274 @@
     font-size: 24px;
   }
 }
+/* Container & Text */
+.contact-section {
+  width: 100%;
+  padding: 60px 20px;
+  background: #fdf5e6;
+  text-align: center;
+}
+
+.contact-title {
+  font-size: clamp(32px, 5vw, 48px); /* Responsive font size */
+  font-weight: 700;
+  color: #8b5a1e;
+  margin-bottom: 8px;
+}
+
+.contact-subtitle {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+/* Button Layout */
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* The Button */
+.contact-btn {
+  display: flex;
+  align-items: center;
+  padding: 8px 24px 8px 10px; /* Reduced left padding to balance the circle */
+  min-width: 220px;
+  border-radius: 50px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* The Icon Circle - This creates the "Perfect" look */
+.icon-circle {
+  background: rgba(0, 0, 0, 0.1); /* Subtle dark overlay */
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  font-size: 22px; /* Icon size inside circle */
+}
+
+/* Button Colors */
+.whatsapp { background-color: #25d366; }
+.call { background-color: #4f8dfd; }
+.instagram { background-color: #ff3b5c; }
+
+/* --- Mobile Responsive --- */
+
+@media (max-width: 768px) {
+  .contact-buttons {
+    flex-direction: column; /* Stack vertically on mobile */
+    gap: 15px;
+  }
+
+  .contact-btn {
+    width: 100%; /* Full width for easy tapping */
+    max-width: 320px;
+    justify-content: flex-start; /* Align text to left on mobile */
+  }
+
+  .contact-title {
+    font-size: 28px;
+  }
+  /* --- Mobile Responsive --- */
+
+@media (max-width: 768px) {
+  .contact-buttons {
+    flex-direction: column; /* Stack vertically on mobile */
+    gap: 15px;
+    padding: 0 10px; /* Extra breathing room */
+  }
+
+  .contact-btn {
+    width: 100%; /* Full width for easy tapping */
+    max-width: 320px;
+    
+    /* Change from flex-start to center */
+    justify-content: center; 
+    
+    /* Reset padding to be even on both sides since we are centering */
+    padding: 10px 20px; 
+    font-size: 17px;
+  }
+
+  .icon-circle {
+    /* Reduce margin to keep icon close to the text while centered */
+    margin-right: 12px; 
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+
+  .contact-title {
+    font-size: 26px; /* Slightly smaller for mobile headers */
+  }
+  
+  .contact-subtitle {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+}
+}
+/* ================= NEW WHY MODERN SECTION ================= */
+.why-section-modern {
+  width: 100%;
+  padding: 100px 20px;
+  background: radial-gradient(circle at top left, #fffdf0, #f7fff6);
+  overflow: hidden;
+}
+
+.why-container {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.why-title-modern {
+  font-size: clamp(30px, 5vw, 42px); /* Responsive fluid typography */
+  font-weight: 800;
+  color: #1b5e20;
+  margin-bottom: 15px;
+  letter-spacing: -0.5px;
+}
+
+.why-subtitle-modern {
+  font-size: 18px;
+  color: #666;
+  max-width: 700px;
+  margin: 0 auto 60px;
+  line-height: 1.6;
+}
+
+/* Updated Grid: Centered and flexible */
+.why-grid-modern {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+/* Card: Soft Glassmorphism UI */
+.why-card-modern {
+  background: #ffffff;
+  border: 1px solid rgba(0, 200, 83, 0.1);
+  padding: 40px 25px;
+  border-radius: 30px;
+  flex: 1 1 220px; /* Responsive flex basis */
+  max-width: 280px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  /* Initial Animation State */
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.why-card-modern:hover {
+  transform: translateY(-12px);
+  background: #ffffff;
+  box-shadow: 0 20px 50px rgba(27, 94, 32, 0.12);
+  border-color: #00c853;
+}
+
+/* Icon Container with Floating Animation */
+.why-icon-modern {
+  width: 85px;
+  height: 85px;
+  margin: 0 auto 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0fff4;
+  border-radius: 24px; /* Squircle shape */
+  transform: rotate(-5deg);
+  transition: transform 0.3s ease;
+}
+
+.why-card-modern:hover .why-icon-modern {
+  transform: rotate(0deg) scale(1.1);
+  background: linear-gradient(135deg, #00c853, #b2ff59);
+}
+
+.why-icon-modern img {
+  width: 45px;
+  height: 45px;
+  filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1));
+}
+
+.why-card-modern h3 {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1b5e20;
+}
+
+.why-card-modern p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Keyframes for Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered Delay for Cards */
+.why-card-modern:nth-child(1) { animation-delay: 0.1s; }
+.why-card-modern:nth-child(2) { animation-delay: 0.2s; }
+.why-card-modern:nth-child(3) { animation-delay: 0.3s; }
+.why-card-modern:nth-child(4) { animation-delay: 0.4s; }
+.why-card-modern:nth-child(5) { animation-delay: 0.5s; }
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .why-section-modern {
+    padding: 60px 15px;
+  }
+  
+  .why-grid-modern {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns on tablets */
+    gap: 15px;
+  }
+  
+  .why-card-modern {
+    max-width: 100%;
+    padding: 25px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-grid-modern {
+    grid-template-columns: 1fr; /* 1 column on small phones */
+  }
+  
+  .why-icon-modern {
+    width: 70px;
+    height: 70px;
+  }
+}

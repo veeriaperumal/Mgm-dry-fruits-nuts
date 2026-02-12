@@ -1,7 +1,7 @@
 import "./Home.css";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
+import { FaWhatsapp, FaPhoneAlt, FaInstagram  } from "react-icons/fa";
 
 export default function Home() {
   // 1. Initialize the ref for the slider
@@ -121,7 +121,17 @@ export default function Home() {
             From crunchy nuts to premium dry fruits, enjoy nature’s best packed
             with care and freshness for your everyday wellness.
           </p>
-          <button className="hero-btn">Contact us</button>
+          <button
+  className="hero-btn"
+  onClick={() => {
+    document.getElementById("contact").scrollIntoView({
+      behavior: "smooth",
+    });
+  }}
+>
+  Contact us
+</button>
+
         </div>
       </section>
 
@@ -270,6 +280,94 @@ export default function Home() {
           </div>
         </div>
       </section>
+<section className="why-section-modern" id="why">
+  <div className="why-container">
+    <h2 className="why-title-modern">Why You’ll Love MGM</h2>
+    <p className="why-subtitle-modern">
+      Premium quality dry fruits and nuts crafted with care, freshness, and 
+      unbeatable taste for your everyday wellness.
+    </p>
+
+    <div className="why-grid-modern">
+      {/* Card 1 */}
+      <div className="why-card-modern">
+        <div className="why-icon-modern">
+          <img src="/images/quality.png" alt="Premium Quality" />
+        </div>
+        <h3>Premium Quality</h3>
+        <p>Carefully selected and tested dry fruits to ensure exceptional freshness and nutrition.</p>
+      </div>
+
+      {/* Card 2 */}
+      <div className="why-card-modern">
+        <div className="why-icon-modern">
+          <img src="/images/organic.png" alt="Organic Choices" />
+        </div>
+        <h3>Organic Choices</h3>
+        <p>Wide range of natural and organic products sourced directly from trusted farms.</p>
+      </div>
+
+      {/* Card 3 */}
+      <div className="why-card-modern">
+        <div className="why-icon-modern">
+          <img src="/images/gift.png" alt="Gift Hampers" />
+        </div>
+        <h3>Custom Gifts</h3>
+        <p>Elegant and healthy gift boxes perfect for festivals, weddings, and celebrations.</p>
+      </div>
+
+      {/* Card 4 */}
+      <div className="why-card-modern">
+        <div className="why-icon-modern">
+          <img src="/images/delivery.png" alt="Fast Delivery" />
+        </div>
+        <h3>Safe Delivery</h3>
+        <p>Hygienically packed and delivered quickly to preserve maximum crunch and taste.</p>
+      </div>
+
+      {/* Card 5 */}
+      <div className="why-card-modern">
+        <div className="why-icon-modern">
+          <img src="/images/price.png" alt="Best Price" />
+        </div>
+        <h3>Best Prices</h3>
+        <p>Premium quality products at competitive prices without compromising on standards.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section className="contact-section" id="contact">
+  <div className="contact-container">
+    <h2 className="contact-title">Get in Touch Instantly</h2>
+    <p className="contact-subtitle">
+      Have a question or want to place an order? Reach us in one tap
+    </p>
+
+    <div className="contact-buttons">
+      <a href="https://wa.me/message/YSP4THEC4TEBH1" target="_blank" className="contact-btn whatsapp">
+        <div className="icon-circle">
+          <FaWhatsapp />
+        </div>
+        <span>Whatsapp us</span>
+      </a>
+
+      <a href="tel:+916380081667" className="contact-btn call">
+        <div className="icon-circle">
+          <FaPhoneAlt />
+        </div>
+        <span>Call Us</span>
+      </a>
+
+      <a href="https://www.instagram.com/mgm2.006?igsh=NnNpcXV5Z29hc2hq" target="_blank" className="contact-btn instagram">
+        <div className="icon-circle">
+          <FaInstagram />
+        </div>
+        <span>Follow Us</span>
+      </a>
+    </div>
+  </div>
+</section>
   {/* FLOATING CONTACT ICONS */}
       <div className="floating-contact">
         <a 

@@ -72,7 +72,7 @@ export default function Header() {
             Products
           </Link>
 
-          <button onClick={() => handleScroll("Footer")}>
+          <button onClick={() => handleScroll("contact")}>
             Contact
           </button>
 
