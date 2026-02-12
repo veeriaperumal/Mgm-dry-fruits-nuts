@@ -1,0 +1,46 @@
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  background-color: #5d1a24; /* Dark maroon color from reference image */
+  padding: 10px 0;
+  white-space: nowrap;
+}
+
+.ticker {
+  display: flex;
+  width: fit-content;
+}
+
+.ticker__item-container {
+  display: flex;
+  animation: ticker-slide 30s linear infinite;
+}
+
+.ticker__item {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0 40px;
+  display: inline-block;
+  letter-spacing: 0.5px;
+}
+
+/* Infinite Train Animation */
+@keyframes ticker-slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .ticker-wrap {
+    padding: 8px 0;
+  }
+  .ticker__item {
+    font-size: 12px;
+    padding: 0 25px;
+  }
+  .ticker__item-container {
+    animation-duration: 20s; /* Move slightly faster on small screens */
+  }
+}

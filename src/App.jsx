@@ -5,6 +5,7 @@ import Home from "./Pages/Home";
 import Products from "./Pages/Products";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import Ticker from "./components/Ticker";
 
 function App() {
   return (
@@ -14,7 +15,9 @@ function App() {
       <ScrollToTop />
 
       {/* Header */}
+      
       <Header />
+      <Ticker />
 
       {/* Pages */}
       <Routes>
