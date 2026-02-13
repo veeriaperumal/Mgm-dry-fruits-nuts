@@ -117,7 +117,7 @@ const handleScroll = (id) => {
         {/* BOTTOM */}
         <div className="footer-bottom">
 
-          <p>© 2025, Natures Gift</p>
+          <p>© 2026, MGM Dry Fruits & Nuts</p>
 
           <a
             href="https://www.instagram.com/mgm2.006?igsh=NnNpcXV5Z29hc2hq"

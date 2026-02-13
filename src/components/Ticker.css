@@ -1,46 +1,59 @@
+/* Ticker Wrapper */
+
 .ticker-wrap {
   width: 100%;
   overflow: hidden;
-  background-color: #5d1a24; /* Dark maroon color from reference image */
+ background-color: #5d1a24; 
   padding: 10px 0;
-  white-space: nowrap;
 }
+
+/* Ticker Track */
 
 .ticker {
   display: flex;
-  width: fit-content;
+  width: max-content;
+  animation: ticker-scroll 35s linear infinite; /* ⬅ Slower speed */
 }
+
+/* Message Container */
 
 .ticker__item-container {
   display: flex;
-  animation: ticker-slide 30s linear infinite;
+  align-items: center;
+  white-space: nowrap;
 }
+
+/* Each Message */
 
 .ticker__item {
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 0 40px;
   display: inline-block;
-  letter-spacing: 0.5px;
+  padding: 0 40px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
 }
 
-/* Infinite Train Animation */
-@keyframes ticker-slide {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+/* Animation */
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-/* Mobile Responsive Adjustments */
+/* Mobile Responsive */
+
 @media (max-width: 768px) {
-  .ticker-wrap {
-    padding: 8px 0;
+  .ticker {
+    animation: ticker-scroll 45s linear infinite; /* Extra slow on mobile */
   }
+
   .ticker__item {
-    font-size: 12px;
+    font-size: 14px;
     padding: 0 25px;
-  }
-  .ticker__item-container {
-    animation-duration: 20s; /* Move slightly faster on small screens */
   }
 }
