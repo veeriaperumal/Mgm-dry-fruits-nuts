@@ -280,11 +280,9 @@
 .gallery-card:hover img {
   transform: scale(1.1);
 }
-
 /* ================= ABOUT SECTION ================= */
 .about-section {
   width: 100%;
-  background: #fffbe6;
   background-image: radial-gradient(#e8dcc6 1px, transparent 1px);
   background-size: 38px 38px;
   padding: 90px 40px 160px;
@@ -316,97 +314,154 @@
 .about-text-box p {
   font-size: 16px;
   line-height: 1.8;
-  color: #d32f2f;
+  color: #333; /* Darker for better readability */
   max-width: 560px;
 }
 
+/* Updated for Vertical Look like the image */
 .about-stats-box {
   position: absolute;
-  left: 50%; /* Changed from 900px to 50% for centering */
-  bottom: 90px;
-  transform: translateX(-50%);
-  width: 90%; /* Use percentage for width safety */
-  max-width: 650px;
+  right: 40%; /* Positioned to the side like your image */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+  height: 400px; /* Narrow width for vertical stacking */
   background: #fff;
-  border-radius: 18px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 32px 0;
-  box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+  flex-direction: column; /* Vertical alignment */
+  align-items: flex-start; /* Left aligned labels */
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 20px 0 50px rgba(0,0,0,0.05);
   z-index: 5;
+  margin-top: 300px;
+
 }
 
 .stat-item {
-  flex: 1;
-  text-align: center;
-  font-size: 26px;
-  font-weight: 700;
-  color: #d32f2f;
+  width: 100%;
+  text-align: left;
+  padding: 20px 0;
   position: relative;
 }
 
+/* Horizontal Lines instead of Vertical ones */
 .stat-item:not(:last-child)::after {
   content: "";
   position: absolute;
-  right: 0;
-  top: 18%;
-  width: 1px;
-  height: 65%;
-  background: #ddd;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1.5px;
+  background: #111; /* Strong black line divider from image */
+}
+
+.stat-number {
+  font-size: 28px;
+  font-weight: 800;
+  color: #70202F; /* Exact Maroon color from image */
+  margin: 0;
+}
+
+.stat-label {
+  font-size: 22px;
+  font-weight: 500;
+  color: #111;
+  margin: 5px 0 0 0;
+  line-height: 1.2;
 }
 
 /* ================= PERFECT MOBILE RESPONSIVE ================= */
 
-@media (max-width: 1024px) {
+/* Tablet & Small Laptops */
+@media (max-width: 1150px) {
+  .about-section {
+    padding: 80px 30px;
+    height: 870px; /* Remove any fixed heights */
+  }
+
   .about-main {
-    grid-template-columns: 1fr; /* Stack image and text */
-    gap: 40px;
+    grid-template-columns: 1fr; /* Stack Image and Text */
     text-align: center;
+    gap: 30px;
   }
 
   .about-text-box p {
-    margin: 0 auto;
+    margin: 0 auto; /* Center text */
   }
 
   .about-stats-box {
-    position: relative; /* Remove absolute on tablet/mobile */
-    left: auto;
-    bottom: auto;
+    position: relative; /* Drop out of absolute positioning */
     transform: none;
-    margin: 40px auto 0;
+    left: auto;
+    right: auto;
+    top: auto;
+    margin: 50px auto 0; /* Center horizontally with margin */
     width: 100%;
+    max-width: 900px;
+    height: auto;
+    flex-direction: row; /* Spread stats side-by-side */
+    justify-content: space-around;
+    padding: 30px 10px;
+    margin-top: 40px; /* Fixes your 300px margin issue */
+  }
+
+  .stat-item {
+    padding: 10px;
+    text-align: center;
+  }
+
+  /* Switch Horizontal Lines to Vertical Dividers on Tablet */
+  .stat-item:not(:last-child)::after {
+    width: 1.5px;
+    height: 60%;
+    right: 0;
+    bottom: auto;
+    top: 20%;
+    left: auto;
   }
 }
 
+/* Standard Mobile (Phones) */
 @media (max-width: 768px) {
   .about-section {
-    padding: 60px 20px 80px;
+    padding: 60px 20px;
   }
 
   .about-text-box h2 {
     font-size: 28px;
   }
 
-  .stat-item {
-    font-size: 20px;
+  .stat-number {
+    font-size: 32px; /* Shrink numbers slightly */
+  }
+
+  .stat-label {
+    font-size: 18px;
   }
 }
 
+/* Small Mobile Devices */
 @media (max-width: 480px) {
   .about-stats-box {
-    flex-direction: column; /* Stack stats vertically on small phones */
-    padding: 20px 0;
-    gap: 20px;
+    flex-direction: column; /* Stack vertically again for small screens */
+    width: 100%;
+    padding: 20px;
+    gap: 15px;
   }
 
   .stat-item:not(:last-child)::after {
-    display: none; /* Remove vertical dividers when stacked */
+    width: 100%; /* Switch back to horizontal line divider */
+    height: 1.5px;
+    left: 0;
+    bottom: 0;
+    right: auto;
+    top: auto;
   }
 
   .about-img-box img {
     height: 190px;
-    width: 380px;
+    width: 380px; /* Better proportion for small phones */
   }
 }
 
@@ -438,6 +493,7 @@
   background-image: radial-gradient(#eadfcd 1px, transparent 1px);
   background-size: 40px 40px;
   padding: 100px 20px;
+  margin-top: 150px;
   overflow: hidden;
 }
 

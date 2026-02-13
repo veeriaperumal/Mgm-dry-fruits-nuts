@@ -2,6 +2,7 @@ import "./Home.css";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaWhatsapp, FaPhoneAlt, FaInstagram  } from "react-icons/fa";
+import { NavHashLink } from 'react-router-hash-link';
 
 export default function Home() {
   // 1. Initialize the ref for the slider
@@ -111,6 +112,33 @@ export default function Home() {
     setActive(active === index ? null : index);
   };
 
+  // Helper Component for the Auto-Count effect
+const StatCounter = ({ endValue, duration = 2000 }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let start = 0;
+    // Extract numbers from string (e.g., "450000+" -> 450000)
+    const target = parseInt(endValue.toString().replace(/\D/g, ""));
+    const increment = target / (duration / 16); // 16ms is roughly 60fps
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [endValue, duration]);
+
+  // Format number back to locale string and add the '+' suffix
+  return <span>{count.toLocaleString()}+</span>;
+};
+
   return (
     <div>
       <section className="home-hero" id="home">
@@ -121,17 +149,14 @@ export default function Home() {
             From crunchy nuts to premium dry fruits, enjoy nature’s best packed
             with care and freshness for your everyday wellness.
           </p>
-          <button
-  className="hero-btn"
-  onClick={() => {
-    document.getElementById("contact").scrollIntoView({
-      behavior: "smooth",
-    });
-  }}
+<NavHashLink 
+  smooth 
+  to="/contact" 
+  onClick={() => setMenuOpen(false)}
+  className="hero-btn" 
 >
-  Contact us
-</button>
-
+  Contact
+</NavHashLink>
         </div>
       </section>
 
@@ -149,28 +174,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ABOUT SECTION */}
-      <section className="about-section" id="about">
-        <div className="about-main">
-          <div className="about-img-box">
-            <img src="/images/about.png" alt="MGM Shop" />
-          </div>
-          <div className="about-text-box">
-            <h2>About MGM Nuts & Dry Fruits</h2>
-            <p>
-              At MGM Nuts & Dry Fruits, we provide carefully selected, premium dry
-              fruits and nuts packed with freshness and quality. Our commitment
-              is to deliver natural taste, purity, and wholesome goodness you can
-              trust for everyday health, nutrition, and mindful snacking.
-            </p>
-          </div>
+<section className="about-section" id="about">
+      <div className="about-main">
+        <div className="about-img-box">
+          <img src="/images/about.png" alt="MGM Shop" />
         </div>
-        <div className="about-stats-box">
-          <div className="stat-item">1</div>
-          <div className="stat-item">2000+</div>
-          <div className="stat-item">1500+</div>
+        <div className="about-text-box">
+          <h2>About MGM Nuts & Dry Fruits</h2>
+          <p>
+            At MGM Nuts & Dry Fruits, we provide carefully selected, premium dry
+            fruits and nuts packed with freshness and quality. Our commitment
+            is to deliver natural taste, purity, and wholesome goodness you can
+            trust for everyday health, nutrition, and mindful snacking.
+          </p>
         </div>
-      </section>
+      </div>
+
+      <div className="about-stats-box">
+        <div className="stat-item">
+          <h2 className="stat-number"><StatCounter endValue={11} /></h2>
+          <p className="stat-label">Stores</p>
+        </div>
+
+        <div className="stat-item">
+          <h2 className="stat-number"><StatCounter endValue={450000} /></h2>
+          <p className="stat-label">Happy Customers</p>
+        </div>
+
+        <div className="stat-item">
+          <h2 className="stat-number"><StatCounter endValue={500000} /></h2>
+          <p className="stat-label">Order Delivered</p>
+        </div>
+      </div>
+    </section>
 
       {/* SHOP CATEGORY SECTION */}
       <section className="category-section" id="category">

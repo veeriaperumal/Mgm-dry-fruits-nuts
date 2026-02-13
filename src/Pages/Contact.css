@@ -1,0 +1,99 @@
+/* Container & Text */
+.contact-section {
+  width: 100%;
+  padding: 60px 20px;
+  background: #fdf5e6;
+  text-align: center;
+}
+
+.contact-title {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  color: #8b5a1e;
+  margin-bottom: 8px;
+}
+
+.contact-subtitle {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+/* Button Layout */
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* The Button */
+.contact-btn {
+  display: flex;
+  align-items: center;
+  padding: 8px 24px 8px 10px;
+  min-width: 220px;
+  border-radius: 50px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.icon-circle {
+  background: rgba(0, 0, 0, 0.1);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  font-size: 22px;
+}
+
+/* Button Colors */
+.whatsapp { background-color: #25d366; }
+.call { background-color: #4f8dfd; }
+.instagram { background-color: #ff3b5c; }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .contact-buttons {
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .contact-btn {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center; 
+    padding: 10px 20px; 
+    font-size: 17px;
+  }
+
+  .icon-circle {
+    margin-right: 12px; 
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+
+  .contact-title {
+    font-size: 26px;
+  }
+  
+  .contact-subtitle {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+}
