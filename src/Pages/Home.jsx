@@ -2,7 +2,7 @@ import "./Home.css";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaWhatsapp, FaPhoneAlt, FaInstagram  } from "react-icons/fa";
-import { Link } from "react-router-dom";
+
 
 export default function Home() {
   // 1. Initialize the ref for the slider
@@ -66,6 +66,10 @@ export default function Home() {
   ];
   const handleExploreClick = () => {
     navigate("/products"); // Change "/products" to your actual products route path
+  };
+
+    const handleClick = () => {
+    navigate("/contact"); // Change "/products" to your actual products route path
   };
 
   // Manual Control Functions
@@ -149,16 +153,9 @@ const StatCounter = ({ endValue, duration = 2000 }) => {
             From crunchy nuts to premium dry fruits, enjoy nature’s best packed
             with care and freshness for your everyday wellness.
           </p>
-<Link
-  to="/contact"
-  onClick={() => {
-    setMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }}
-  className="hero-btn"
->
-  Contact
-</Link>
+ <button className="hero-btn" onClick={handleClick}>
+              Contact
+            </button>
 
         </div>
       </section>
