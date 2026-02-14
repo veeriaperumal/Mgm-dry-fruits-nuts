@@ -11,8 +11,6 @@ export default function Products() {
     { name: "Anjeer / Fig", img: "/images/anjeer.png" },
     { name: "Dry Grapes", img: "/images/grapes.png" },
     { name: "Combo Pack", img: "/images/combo.png" },
-    { name: "Attars", img: "/images/attar.png" },
-    { name: "Perfumes", img: "/images/perfume.png" },
     { name: "Organic Millets", img: "/images/millet.png" },
      { name: "Snacks", img: "/images/snacks.png",},
 
@@ -21,10 +19,8 @@ export default function Products() {
   {name: "Juices",img: "/images/juices.png",},
   {name: "Flavoured Makhana",img: "/images/makhana-flavoured.png",},
   {name: "Gift Hampers",img: "/images/gift-hampers.png",},
-  {name: "Chocolate Gifts",img: "/images/chocolate-gifts.png",},
   {name: "Customized Gifts",img: "/images/custom-gifts.png",},
   {name: "Makhana Plain",img: "/images/makhana-plain.png",},
-  {name: "Imported Chocolate",img: "/images/imported-chocolate.png",},
 
    {name: "Indian Chocolates",img: "/images/indian-chocolates.png",},
   {name: "Imported Chocolate",img: "/images/imported-chocolate.png",},
@@ -32,10 +28,7 @@ export default function Products() {
   {name: "ABC Malt",img: "/images/abc-malt.png",},
   {name: "Honey Mix Nuts",img: "/images/honey-mix-nuts.png",},
   {name: "Coco Powder",img: "/images/coco-powder.png",},
-  {name: "Organic Rices",img: "/images/organic-rice.png",},
-  {name: "Aval",img: "/images/aval.png",},
   {name: "Biscuits",img: "/images/biscuits.png",},
-  {name: "Organic Millets",img: "/images/organic-millets.png",}
   ];
 
   return (

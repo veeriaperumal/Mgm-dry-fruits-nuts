@@ -1,0 +1,169 @@
+/* --- Section Layout --- */
+.mgm-about-section {
+  width: 100%;
+  padding: 80px 20px 120px;
+  background-image: radial-gradient(#e8dcc6 1px, transparent 1px);
+  background-size: 30px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.mgm-about-container {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+/* --- Image Styling --- */
+.mgm-about-visual {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.mgm-about-visual img {
+  width: 600px;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.mgm-about-visual:hover img {
+  transform: scale(1.03);
+}
+
+/* --- Text Styling --- */
+.mgm-about-content h2 {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.mgm-about-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #a52a2a;
+}
+
+/* --- Stats Pill Styling --- */
+.mgm-stats-bar-wrapper {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: center;
+}
+
+.mgm-stats-pill {
+  background: #ffffff;
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  padding: 40px 30px;
+  border-radius: 15px 15px 150px 15px; 
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.mgm-stats-item {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.mgm-stats-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 15%;
+  height: 70%;
+  width: 1.5px;
+  background-color: #a52a2a; 
+  opacity: 0.6;
+}
+
+.mgm-stats-number {
+  font-size: 44px;
+  font-weight: 800;
+  color: #a52a2a; 
+  margin: 0;
+}
+
+.mgm-stats-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+
+@media (max-width: 1024px) {
+  .mgm-about-container {
+    gap: 40px;
+  }
+  .mgm-about-visual img {
+    height: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mgm-about-section { 
+    padding: 40px 15px; 
+  }
+  
+  .mgm-about-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .mgm-about-visual img {
+    height: 300px;
+  }
+
+  .mgm-about-content p {
+    margin: 0 auto;
+    font-size: 16px;
+  }
+
+  .mgm-stats-pill {
+    flex-direction: column; 
+    border-radius: 20px 20px 80px 20px; 
+    gap: 30px;
+    padding: 30px 15px;
+  }
+
+  .mgm-stats-item:not(:last-child)::after {
+    width: 50%;
+    height: 1.5px;
+    right: 25%;
+    bottom: -15px;
+    top: auto;
+    left: 25%;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Removed fixed 430px width to prevent side-scrolling */
+  .mgm-about-visual img {
+    height: 200px;
+    width: 420px;
+  }
+  .mgm-about-content h2 {
+    font-size: 26px;
+  }
+  .mgm-stats-number {
+    font-size: 34px;
+  }
+}

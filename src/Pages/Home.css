@@ -81,7 +81,7 @@
   max-width: 700px;
   font-size: clamp(14px, 1.8vw, 17px);
   line-height: 1.8;
-  color: #4a4a4a;
+  color: #2e7d32;
   opacity: 0;
   /* Staggered auto-reveal */
   animation: ultraFadeIn 0.8s ease-out 0.6s forwards;
@@ -283,7 +283,6 @@
 /* ================= ABOUT SECTION ================= */
 .about-section {
   width: 100%;
-  background-image: radial-gradient(#e8dcc6 1px, transparent 1px);
   background-size: 38px 38px;
   padding: 90px 40px 160px;
   position: relative;
@@ -314,7 +313,7 @@
 .about-text-box p {
   font-size: 16px;
   line-height: 1.8;
-  color: #333; /* Darker for better readability */
+  color: #c62828; /* Darker for better readability */
   max-width: 560px;
 }
 
@@ -326,7 +325,6 @@
   transform: translateY(-50%);
   width: 300px;
   height: 400px; /* Narrow width for vertical stacking */
-  background: #fff;
   display: flex;
   flex-direction: column; /* Vertical alignment */
   align-items: flex-start; /* Left aligned labels */
@@ -359,7 +357,7 @@
 .stat-number {
   font-size: 28px;
   font-weight: 800;
-  color: #70202F; /* Exact Maroon color from image */
+  color: #c62828; /* Exact Maroon color from image */
   margin: 0;
 }
 
@@ -369,6 +367,99 @@
   color: #111;
   margin: 5px 0 0 0;
   line-height: 1.2;
+}
+/* Container to center the pill on the page */
+.stats-pill-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 60px 20px;
+  background-color: transparent; /* Or match your section background */
+}
+
+/* The main white box with the unique corner curve */
+.stats-pill-box {
+  background: #ffffff;
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 1100px;
+  padding: 40px 30px;
+  /* This creates the look from your image: rounded with a sharp bottom-right flare */
+  border-radius: 15px 15px 150px 15px; 
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.stats-pill-item {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Red Vertical Dividers (just like the image) */
+.stats-pill-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 15%;
+  height: 70%;
+  width: 1.5px;
+  background-color: #a52a2a; /* Maroon/Red divider */
+  opacity: 0.6;
+}
+
+/* Maroon Numbers */
+.stats-pill-number {
+  font-size: 44px;
+  font-weight: 800;
+  color: #a52a2a; /* Deep Maroon color */
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Dark Grey/Black Labels */
+.stats-pill-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .stats-pill-box {
+    max-width: 90%;
+    padding: 30px 15px;
+  }
+  .stats-pill-number {
+    font-size: 32px;
+  }
+  .stats-pill-label {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .stats-pill-box {
+    flex-direction: column; /* Stack vertically on small phones */
+    border-radius: 20px;
+    gap: 25px;
+  }
+
+  .stats-pill-item:not(:last-child)::after {
+    width: 60%;
+    height: 1.5px;
+    right: 20%;
+    bottom: -12px;
+    top: auto;
+  }
 }
 
 /* ================= PERFECT MOBILE RESPONSIVE ================= */
@@ -493,7 +584,7 @@
   background-image: radial-gradient(#eadfcd 1px, transparent 1px);
   background-size: 40px 40px;
   padding: 100px 20px;
-  margin-top: 150px;
+  margin-top: -140px;
   overflow: hidden;
 }
 
@@ -582,6 +673,7 @@
 @media (max-width: 768px) {
   .category-section {
     padding: 60px 15px;
+    margin-top: 100px;
   }
   
   .category-row {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaWhatsapp, FaPhoneAlt, FaInstagram } from 'react-icons/fa';
-import './Contact.css'; // Ensure the CSS file name matches
+import './Contact.css';
 
 const Contact = () => {
   return (
@@ -48,6 +48,27 @@ const Contact = () => {
             </div>
             <span>Follow Us</span>
           </a>
+        </div>
+
+        {/* Live Google Map Section */}
+        <div className="map-wrapper">
+          <h3 className="map-title">Visit Our Store</h3>
+          <p className="map-address">
+            230, Vazhudhavur Road, Near IGMCH Hospital, Kadhirkamam, Pondicherry - 605009
+          </p>
+          <div className="map-container">
+            {/* REAL LIVE GOOGLE MAP LINK FOR MGM DRY FRUITS PONDY */}
+            <iframe
+              title="MGM Dry Fruits and Nuts Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3903.355182187332!2d79.79119157582496!3d11.950269387363412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5361b3707f70d7%3A0x830b43213d97c947!2sMGM%20DRY%20FRUITS%20AND%20NUTS!5e0!3m2!1sen!2sin!4v1715000000000!5m2!1sen!2sin"
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
         </div>
       </div>
     </section>

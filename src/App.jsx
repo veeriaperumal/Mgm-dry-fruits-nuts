@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Contact from "./Pages/Contact";
 import ScrollToTop from "./components/ScrollToTop";
 import Ticker from "./components/Ticker";
+import About from "./Pages/About";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
       </Routes>
 
       {/* Footer */}

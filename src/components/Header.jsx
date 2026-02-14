@@ -64,9 +64,9 @@ export default function Header() {
             Home
           </Link>
 
-          <button onClick={() => handleScroll("about")}>
+          <Link to="/about" onClick={() => setMenuOpen(false)}>
             About Us
-          </button>
+          </Link>
 
           <Link to="/products" onClick={() => setMenuOpen(false)}>
             Products

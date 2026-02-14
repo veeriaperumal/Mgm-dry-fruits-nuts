@@ -116,15 +116,32 @@ export default function Home() {
     setActive(active === index ? null : index);
   };
 
-  // Helper Component for the Auto-Count effect
 const StatCounter = ({ endValue, duration = 2000 }) => {
   const [count, setCount] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
+  const elementRef = useRef(null);
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Only start counting if the element is in view
+        if (entry.isIntersecting) {
+          setHasStarted(true);
+        }
+      },
+      { threshold: 0.3 } // Triggers when 30% of the component is visible
+    );
+
+    if (elementRef.current) observer.observe(elementRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
     let start = 0;
-    // Extract numbers from string (e.g., "450000+" -> 450000)
     const target = parseInt(endValue.toString().replace(/\D/g, ""));
-    const increment = target / (duration / 16); // 16ms is roughly 60fps
+    const increment = target / (duration / 16);
 
     const timer = setInterval(() => {
       start += increment;
@@ -137,11 +154,11 @@ const StatCounter = ({ endValue, duration = 2000 }) => {
     }, 16);
 
     return () => clearInterval(timer);
-  }, [endValue, duration]);
+  }, [hasStarted, endValue, duration]);
 
-  // Format number back to locale string and add the '+' suffix
-  return <span>{count.toLocaleString()}+</span>;
+  return <span ref={elementRef}>{count.toLocaleString()}+</span>;
 };
+
 
   return (
     <div>
@@ -163,7 +180,7 @@ const StatCounter = ({ endValue, duration = 2000 }) => {
       {/* GALLERY SECTION */}
       <section className="gallery-section" id="products">
         <div className="gallery-grid">
-          <div className="gallery-card"><img src="/images/product1.png" alt="Dry Fruits" /></div>
+          <div className="gallery-card"><img src="/images/gift-hampers.png" alt="Dry Fruits" /></div>
           <div className="gallery-card"><img src="/images/product2.png" alt="Mixed Nuts" /></div>
           <div className="gallery-card"><img src="/images/product3.png" alt="Chocolates" /></div>
           <div className="gallery-card"><img src="/images/product4.png" alt="Walnuts" /></div>
@@ -174,39 +191,41 @@ const StatCounter = ({ endValue, duration = 2000 }) => {
         </div>
       </section>
 
-<section className="about-section" id="about">
-      <div className="about-main">
-        <div className="about-img-box">
-          <img src="/images/about.png" alt="MGM Shop" />
-        </div>
-        <div className="about-text-box">
-          <h2>About MGM Nuts & Dry Fruits</h2>
-          <p>
-            At MGM Nuts & Dry Fruits, we provide carefully selected, premium dry
-            fruits and nuts packed with freshness and quality. Our commitment
-            is to deliver natural taste, purity, and wholesome goodness you can
-            trust for everyday health, nutrition, and mindful snacking.
-          </p>
-        </div>
-      </div>
-
-      <div className="about-stats-box">
-        <div className="stat-item">
-          <h2 className="stat-number"><StatCounter endValue={11} /></h2>
-          <p className="stat-label">Stores</p>
+     <section className="about-section" id="about">
+        <div className="about-main">
+          <div className="about-img-box">
+            <img src="/images/about.png" alt="MGM Shop" />
+          </div>
+          <div className="about-text-box">
+            <h2>About MGM Nuts & Dry Fruits</h2>
+            <p>
+              At MGM Nuts & Dry Fruits, we provide carefully selected, premium dry
+              fruits and nuts packed with freshness and quality. Our commitment
+              is to deliver natural taste, purity, and wholesome goodness you can
+              trust for everyday health, nutrition, and mindful snacking.
+            </p>
+          </div>
         </div>
 
-        <div className="stat-item">
-          <h2 className="stat-number"><StatCounter endValue={450000} /></h2>
-          <p className="stat-label">Happy Customers</p>
-        </div>
+        <div className="stats-pill-wrapper">
+          <div className="stats-pill-box">
+            <div className="stats-pill-item">
+              <h2 className="stats-pill-number"><StatCounter endValue={1} /></h2>
+              <p className="stats-pill-label">Stores</p>
+            </div>
 
-        <div className="stat-item">
-          <h2 className="stat-number"><StatCounter endValue={500000} /></h2>
-          <p className="stat-label">Order Delivered</p>
+            <div className="stats-pill-item">
+              <h2 className="stats-pill-number"><StatCounter endValue={2000} /></h2>
+              <p className="stats-pill-label">Happy Customers</p>
+            </div>
+
+            <div className="stats-pill-item">
+              <h2 className="stats-pill-number"><StatCounter endValue={1500} /></h2>
+              <p className="stats-pill-label">Orders Delivered</p>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
       {/* SHOP CATEGORY SECTION */}
       <section className="category-section" id="category">
