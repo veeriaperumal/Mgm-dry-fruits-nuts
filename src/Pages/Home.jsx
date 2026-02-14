@@ -2,7 +2,7 @@ import "./Home.css";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaWhatsapp, FaPhoneAlt, FaInstagram  } from "react-icons/fa";
-import { NavHashLink } from 'react-router-hash-link';
+import { Link } from "react-router-dom";
 
 export default function Home() {
   // 1. Initialize the ref for the slider
@@ -149,14 +149,17 @@ const StatCounter = ({ endValue, duration = 2000 }) => {
             From crunchy nuts to premium dry fruits, enjoy nature’s best packed
             with care and freshness for your everyday wellness.
           </p>
-<NavHashLink 
-  smooth 
-  to="/contact" 
-  onClick={() => setMenuOpen(false)}
-  className="hero-btn" 
+<Link
+  to="/contact"
+  onClick={() => {
+    setMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }}
+  className="hero-btn"
 >
   Contact
-</NavHashLink>
+</Link>
+
         </div>
       </section>
 
