@@ -13,8 +13,8 @@ export default function Products() {
     { name: "Organic Millets", img: "/images/millet.png" },
     { name: "Snacks", img: "/images/snacks.png" },
 
-    { name: "Ajwa Dates", img: "/images/ajwa-dates.jpg" },
-    { name: "Medjool Dates", img: "/images/medjool-dates.jpg" },
+    { name: "Ajwa Dates", img: "/images/ajwa-dates.png" },
+    { name: "Medjool Dates", img: "/images/medjool-dates.png" },
     { name: "Safawi Dates", img: "/images/safawi-dates.png" },
     { name: "Kimia Dates", img: "/images/kimia-dates.png" },
 
@@ -61,7 +61,7 @@ export default function Products() {
       img: "/images/quaker-white-oats-250g.jpg",
     },
     { name: "American Juice", img: "/images/american-juice.png" },
-    { name: "Peanut Butter", img: "/images/peanut-butter.jpg" },
+    { name: "Peanut Butter", img: "/images/peanut-butter.png" },
 
     { name: "Fig Regular", img: "/images/fig-regular.png" },
     { name: "Fig Jumbo", img: "/images/fig-jumbo.png" },
