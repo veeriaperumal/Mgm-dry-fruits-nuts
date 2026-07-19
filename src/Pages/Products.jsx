@@ -2,7 +2,6 @@ import "./Products.css";
 import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
 
 export default function Products() {
-
   const products = [
     { name: "Dates", img: "/images/dates.png" },
     { name: "Dry Fruits", img: "/images/dryfruits.png" },
@@ -14,16 +13,16 @@ export default function Products() {
     { name: "Organic Millets", img: "/images/millet.png" },
     { name: "Snacks", img: "/images/snacks.png" },
 
-    { name: "Ajwa Dates", img: "/images/ajwa-dates.png" },
-    { name: "Medjool Dates", img: "/images/medjool-dates.png" },
-    { name: "Kimia Dates", img: "/images/kimia-dates.png" },
+    { name: "Ajwa Dates", img: "/images/ajwa-dates.jpg" },
+    { name: "Medjool Dates", img: "/images/medjool-dates.jpg" },
     { name: "Safawi Dates", img: "/images/safawi-dates.png" },
+    { name: "Kimia Dates", img: "/images/kimia-dates.png" },
 
-    { name: "Biscoff Biscuit", img: "/images/biscoff-biscuit.png" },
-    { name: "Biscoff Cream", img: "/images/biscoff-cream.png" },
+    { name: "Biscoff Biscuit", img: "/images/biscoff-biscuit.jpg" },
+    { name: "Biscoff Cream", img: "/images/Biscoffcream.jpg" },
 
     { name: "Marshmallow", img: "/images/marshmallow.png" },
-    { name: "Nutella", img: "/images/nutella.png" },
+    { name: "Nutella", img: "/images/nutella.jpg" },
 
     { name: "Wines", img: "/images/wines.png" },
     { name: "Chocolates", img: "/images/chocolates.png" },
@@ -45,19 +44,24 @@ export default function Products() {
 
     { name: "Honey Amla", img: "/images/honey-amla.png" },
     { name: "Twister Wafer", img: "/images/twister-wafer.png" },
+
     { name: "Butter Cookies", img: "/images/butter-cookies.png" },
 
     { name: "Hazelnut", img: "/images/hazelnut.png" },
+    { name: "Pecan Nut", img: "/images/pecan-nut.png" },
+
     { name: "Brazil Nut", img: "/images/brazil-nut.png" },
     { name: "Mamra Badam", img: "/images/mamra-badam.png" },
-    { name: "Pecan Nut", img: "/images/pecan-nut.png" },
 
     { name: "Pepper Cashew", img: "/images/pepper-cashew.png" },
     { name: "Chili Cashew", img: "/images/chili-cashew.png" },
 
-    { name: "Quaker White Oats 250g", img: "/images/quaker-white-oats-250g.png" },
+    {
+      name: "Quaker White Oats 250g",
+      img: "/images/quaker-white-oats-250g.jpg",
+    },
     { name: "American Juice", img: "/images/american-juice.png" },
-    { name: "Peanut Butter", img: "/images/peanut-butter.png" },
+    { name: "Peanut Butter", img: "/images/peanut-butter.jpg" },
 
     { name: "Fig Regular", img: "/images/fig-regular.png" },
     { name: "Fig Jumbo", img: "/images/fig-jumbo.png" },
@@ -74,43 +78,30 @@ export default function Products() {
 
     { name: "Black Raisin", img: "/images/black-raisin.png" },
     { name: "Black Seedless Raisin", img: "/images/black-seedless-raisin.png" },
-    { name: "Yellow Grapes", img: "" },
-    { name: "Golden Grapes", img: "" }
+    { name: "Yellow Grapes", img: "/images/yellow-grapes.png" },
+    { name: "Golden Grapes", img: "/images/golden-grapes.png" },
   ];
 
   return (
     <div>
       <section className="products-page">
-
         {/* Title */}
-        <h2 className="products-title">
-          Our Products
-        </h2>
+        <h2 className="products-title">Our Products</h2>
 
-        <p className="products-subtitle">
-          Healthy Snacking Starts Here
-        </p>
-
+        <p className="products-subtitle">Healthy Snacking Starts Here</p>
 
         {/* Grid */}
         <div className="products-grid">
-
           {products.map((item, i) => (
             <div className="product-card" key={i}>
-
               <div className="product-img">
                 <img src={item.img} alt={item.name} />
               </div>
 
               <h3>{item.name}</h3>
-
             </div>
           ))}
-
-
         </div>
-
-
       </section>
       {/* FLOATING CONTACT ICONS */}
       <div className="floating-contact">
